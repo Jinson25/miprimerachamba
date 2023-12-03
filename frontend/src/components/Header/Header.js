@@ -1,18 +1,33 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import classes from "./header.module.css";
 import { Link } from "react-router-dom";
+import { Container } from "react-bootstrap";
 
 export default function Header() {
+    const [scrolled, setScrolled] = useState(false);
     const user = {
         name: "Jinson",
     };
-    const logout = () => { };
+    const logout = () => {};
+
+    useEffect(() => {
+        const handleScroll = () => {
+            const isScrolled = window.scrollY > 50;
+            setScrolled(isScrolled);
+        };
+
+        window.addEventListener("scroll", handleScroll);
+
+        return () => {
+            window.removeEventListener("scroll", handleScroll);
+        };
+    }, []);
 
     return (
-        <header className={classes.header}>
-            <div className={classes.container}>
+        <header className={`${classes.header} ${scrolled ? classes.scrolled : ""}`}>
+            <Container className={classes.container}>
                 <Link to="/" className={classes.logo}>
-                    YAVIBOOKshop
+                    YAVIBOOK
                 </Link>
                 <nav>
                     <ul>
@@ -21,7 +36,9 @@ export default function Header() {
                                 <Link to="/profile">{user.name}</Link>
                                 <div className={classes.menu}>
                                     <Link to="/profile">PERFIL</Link>
-                                    <a href="/" onClick={logout}>SALIR</a>
+                                    <a href="/" onClick={logout}>
+                                        SALIR
+                                    </a>
                                 </div>
                             </li>
                         ) : (
@@ -29,7 +46,7 @@ export default function Header() {
                         )}
                     </ul>
                 </nav>
-            </div>
+            </Container>
         </header>
     );
 }

@@ -1,0 +1,90 @@
+/************ Banner Css ************/
+.banner {
+    margin-top: 0;
+    padding: 260px 0 100px 0;
+    background-image: url('../../assets/banner-bg.png');
+    background-position: top center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
+    z-index: 1;
+}
+
+
+.banner h1{
+    font-size: 65px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    line-height: 1;
+    margin-bottom: 20px;
+    display: block;
+    color: #fff;
+}
+.banner span{
+    font-size: 60px;
+    font-weight: 600;
+    letter-spacing: 0.7px;
+    line-height: 1;
+    margin-bottom: 20px;
+    display: block;
+    color: #fff;
+}
+
+.banner p {
+    color: #ffffff;
+    font-size: 18px;
+    letter-spacing: 0.8px;
+    line-height: 1.5em;
+    width: 96%;
+}
+
+.banner button {
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 20px;
+    margin-top: 60px;
+    letter-spacing: 0.8px;
+    display: flex;
+    align-items: center;
+    border-radius: 15px;
+    background-color: #00000000;
+}
+
+.banner button svg {
+    font-size: 25px;
+    margin-left: 10px;
+    transition: 0.3s ease-in-out;
+    line-height: 1;
+}
+
+.banner button:hover svg {
+    margin-left: 25px;
+}
+
+.banner img {
+    animation: updown 3s linear infinite;
+}
+.banner img {
+    width: 100%; /* Ocupa el 100% del ancho del contenedor */
+    height: auto; /* Ajusta automáticamente la altura para mantener la proporción */
+    max-height: 100%; /* No excede el 100% del alto del contenedor */
+    display: block; /* Evita el espacio adicional debajo de la imagen */
+}
+
+@keyframes updown {
+    0% {
+        transform: translateY(-20px);
+    }
+
+    50% {
+        transform: translateY(20px);
+    }
+
+    100% {
+        transform: translateY(-20px);
+    }
+}
+
+.txt-rotate>.wrap {
+    border-right: 0.08em solid #666;
+}
