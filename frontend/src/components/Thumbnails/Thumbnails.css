@@ -1,55 +1,62 @@
-body{
-    background-color: #121212 !important;
-}
 .list {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    list-style-type: none;
-    padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  list-style-type: none;
+  padding: 0;
+}
+
+.list li {
+  flex-basis: calc(33.33% - 10rem);
+  /* Adjust the width and margin as needed */
+  margin: 0.5rem;
 }
 
 .list li a {
-    height: 22.5rem;
-    width: 20rem;
-    border: 1px solid whitesmoke;
-    border-radius: 1rem;
-    margin: 0.5rem;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-    color: #85a8ff;
-    text-decoration: none;
-    background-color: #FFFF;
+  height: 30rem;
+  width: 100%;
+  /* Adjust the width as needed */
+  border: 1px solid whitesmoke;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  color: #000;
+  text-decoration: none;
+  background-color: #ffffff;
+  text-align: center;
 }
 
 .image {
-    object-fit: cover;
-    height: 14.5rem;
+  object-fit: cover;
+  height: 14.5rem;
 }
 
 .content {
-    margin-top: 0.3rem;
-    padding: 0.5rem 1rem;
-    position: relative;
-    height: 7rem;
+  margin-top: 0.3rem;
+  padding: 0.5rem 1rem;
+  position: relative;
+  height: 7rem;
 }
 
 .favorite {
-    position: absolute;
-    top: 0.5rem;
-    right: 1rem;
-    font-size: 1.2rem;
+  position: absolute;
+  top: 0.5rem;
+  right: 1rem;
+  font-size: 1.2rem;
 }
 
 .favorite.not {
-    color: grey;
+  color: grey;
 }
 
 .stars {
-    margin: 0.5rem 0;
+  margin: 0.5rem 0;
 }
 .origins {
-    flex: 9;
+  flex: 9;
+}
+.autor p span{
+  font-weight: bolder;
 }

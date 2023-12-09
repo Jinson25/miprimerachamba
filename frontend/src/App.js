@@ -1,16 +1,13 @@
 import AppRoutes from "./AppRoutes";
-import 'bootstrap/dist/css/bootstrap.min.css';
-import {Banner} from "./components/Banner/Banner"
+import "bootstrap/dist/css/bootstrap.min.css";
 import Header from "./components/Header/Header";
 
 function App() {
   return (
     <>
-    <Header/>
-      <Banner />
+      <Header />
       <AppRoutes />
     </>
   );
 }
-
 export default App;

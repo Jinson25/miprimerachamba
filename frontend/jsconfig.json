@@ -2,5 +2,5 @@
     "compilerOptions": {
         "moduleResolution": "node"
     },
-    "include": ["src"]
+    "include": ["src", "../server/src/data.js"]
 }

@@ -1,84 +1,88 @@
 /* Estilo del encabezado */
 .header {
-    padding: 1rem 15px; /* Ajuste del relleno del encabezado */
-    background-color: rgba(0, 0, 0, 0); /* Fondo transparente por defecto */
-    transition: background-color 0.3s; /* Transición suave del color de fondo */
-    position: fixed; /* Posición absoluta para evitar superposición sobre el contenido del banner */
-    z-index: 2; /* Índice z para asegurar que esté sobre el contenido */
-    width: 100vw;
+  padding: 1rem 15px; /* Ajuste del relleno del encabezado */
+  background-color: rgba(0, 0, 0, 0); /* Fondo transparente por defecto */
+  transition: background-color 0.3s; /* Transición suave del color de fondo */
+  position: fixed; /* Posición absoluta para evitar superposición sobre el contenido del banner */
+  z-index: 2; /* Índice z para asegurar que esté sobre el contenido */
+  width: 100vw;
+  justify-content: space-between;
+}
+.customColor {
+  background-color: #0000;
+  /* Otros estilos según tus necesidades */
 }
 
 /* Enlace en el encabezado */
 .header a {
-    color: #ffffff;
-    font-style: normal;
-    text-decoration: none;
+  color: #ffffff;
+  font-style: normal;
+  text-decoration: none;
 }
 
 /* Estilo del enlace al pasar el mouse sobre él */
 .header a:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 /* Cambios en el encabezado al hacer scroll */
 .header.scrolled {
-    background-color: #151515; /* Color de fondo cuando el encabezado se desplaza */
-    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1); /* Sombra suave al desplazarse */
-    padding: 0;
+  background-color: #151515; /* Color de fondo cuando el encabezado se desplaza */
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1); /* Sombra suave al desplazarse */
+  padding: 0;
 }
-
 
 /* Contenedor del encabezado */
 .container {
-    margin: 0 auto;
-    display: flex;
-    width: 85vw;
-    justify-content: space-between;
+  margin: 0 auto;
+  display: flex;
+  width: 85vw;
+  justify-content: space-between;
 }
 
 /* Estilo del logo en el encabezado */
 .logo {
-    padding: 1rem;
-    font-weight: 700;
-    color: #fff;
+  padding: 1rem;
+  font-weight: 700;
+  color: #fff;
 }
 
 /* Lista no ordenada en el encabezado */
 .header ul {
-    display: flex;
-    list-style-type: none;
-    margin: 0;
+  display: flex;
+  list-style-type: none;
+  margin: 0;
 }
 
 /* Estilo de los elementos de la lista en el encabezado */
 .header ul a {
-    padding: 1rem;
-    display: inline-block;
+  padding: 1rem;
+  display: inline-block;
 }
 
 /* Contenedor del menú en el encabezado */
 .menu_container {
-    position: relative;
+  position: relative;
 }
 
 /* Estilo del menú desplegable en el encabezado */
 .menu {
-    position: absolute;
-    z-index: 1;
-    display: none;
+  position: absolute;
+  z-index: 1;
+  display: none;
 }
 
 /* Mostrar el menú desplegable al pasar el mouse sobre el contenedor del menú */
 .menu_container:hover .menu {
-    display: block;
+  display: block;
+  background-color: #151515;
 }
 
 /* Estilo de los elementos del menú desplegable */
 .menu a {
-    width: 100%;
-    min-width: 8rem;
+  width: 100%;
+  min-width: 8rem;
 }
-.menu a:hover{
-    color: #85a8ff;
+.menu a:hover {
+  color: var(--purple-color);
 }
-

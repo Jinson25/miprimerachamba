@@ -1,3 +1,17 @@
-import { data_biblioteca } from "../data";
+import axios from "axios";
 
-export const getAll = async () => data_biblioteca;
+export const getAll = async () => {
+  const { data } = await axios.get("/api/v1/biblioteca");
+  return data;
+
+};
+
+export const search = async searchTerm => {
+  const { data } = await axios.get(`/api/v1/biblioteca/search/${searchTerm}`);
+  return data;
+}
+
+  export const getById = async bookId => {
+    const { data } = await axios.get(`/api/v1/biblioteca/${bookId}`);
+    return data;
+  }

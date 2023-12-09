@@ -1,6 +1,9 @@
 import React, { useEffect, useReducer } from "react";
-import { getAll } from "../../services/bibliotecaService";
+import { getAll, search } from "../../services/bibliotecaService";
 import Thumbnails from "../../components/Thumbnails/Thumbnails";
+import { useParams } from 'react-router-dom';
+import {Banner} from "../../components/Banner/Banner";
+import NotFound from "../../components/NotFound/NotFound";
 
 const initialState = { libros: [] };
 const reducer = (state, action) => {
@@ -14,15 +17,17 @@ const reducer = (state, action) => {
 export default function HomePages() {
     const [state, dispatch] = useReducer(reducer, initialState);
     const { libros } = state;
+    const { searchTerm } = useParams();
 
     useEffect(() => {
-        getAll().then((libros) =>
-            dispatch({ type: "LIBROS_LOADED", payload: libros })
-        );
-    }, []);
+        const loadedBooks = searchTerm ? search(searchTerm) : getAll();
+        loadedBooks.then((libros => dispatch({ type: "LIBROS_LOADED", payload: libros })));
+    }, [searchTerm]);
     return (
         <>
-            <Thumbnails libros={libros}/>
+            <Banner />
+            {libros.lenght === 0 && <NotFound linkRoute="Resetea la busqueda" />}
+            <Thumbnails libros={libros}/> 
         </>
     );
 }

@@ -5,37 +5,38 @@ import "./Thumbnails.css";
 
 export default function Thumbnails({ libros }) {
   return (
-    <ul className="list">
-      {libros.map((libro) => (
-        <li key={libro.id}>
-          <Link to={`/libro/${libro.id}`}>
-            <img
-              className="image"
-              src={libro.portadaIMG}
-              alt={libro.name}
-            />
+    <section className="booklist">
+          <div className="container">
+      <div className="row">
+            <ul className="list grid">
+              {libros.map((libro) => (
+                <li key={libro.id}>
+                  <Link to={`/book/${libro.id}`}>
+                    <img
+                      className="image"
+                      src={libro.portadaIMG}
+                      alt={libro.name}
+                    />
 
-            <div className="content">
-              <div className="name">{libro.nombre} </div>
-              <span
-                className={`favorite ${libro.favorite ? "" : "not"}`}
-              >
-                ❤️
-              </span>
-              <div className="stars">
-                <StarRating stars={libro.calificacion} />
-              </div>
-              <div className="origins">
-                  {libro.categoria.map(origin => (
-                    <span key={origin}>{origin}</span>
-                  ))}
-                </div>
-              <div className="autor">{libro.autor} / {libro.anio}</div>
-              
-            </div>
-          </Link>
-        </li>
-      ))}
-    </ul>
+                    <div className="content">
+                      <div className="name">{libro.titulo} </div>
+                      <div className="stars">
+                        <StarRating stars={libro.calificacion} />
+                      </div>
+                      <div className="autor">
+                        <p><span>Autor:</span> {libro.autor}</p>
+                        <p><span>Publicado:</span> {libro.anio}</p>
+                      </div>
+                      <div className="publicacion">
+                        
+                        </div>
+                    </div>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+      </div>
+      </section>
   );
 }
