@@ -68,7 +68,7 @@ export const Banner = () => {
                     <h1>{`Bienvenidos a`} </h1>
                     <span
                       className="txt-rotate"
-                      dataPeriod="1000"
+                      dataperiod="1000"
                       data-rotate='[ "Yavi Book", "tus libros de confianza"]'
                     >
                       <span className="wrap">{text}</span>
@@ -76,7 +76,6 @@ export const Banner = () => {
                     <p>
                       Lorem Ipsum is simply dummy text of the printing and
                       typesetting industry. Lorem Ipsum has been the industry's
-                      
                     </p>
                     <button onClick={() => console.log("connect")}>
                       <ArrowRightCircle size={25} />
@@ -93,7 +92,11 @@ export const Banner = () => {
                       isVisible ? "animate__animated animate__zoomIn" : ""
                     }
                   >
-                    <img src="/contact-img.svg" alt="Header Img" className="responsive-img" />
+                    <img
+                      src="/contact-img.svg"
+                      alt="Header Img"
+                      className="responsive-img"
+                    />
                   </div>
                 )}
               </TrackVisibility>

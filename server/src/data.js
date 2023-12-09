@@ -30,7 +30,7 @@ export const data_biblioteca = [
     categoria: ["pricipito", "novela"],
   },
   {
-    id: "2",
+    id: "3",
     titulo: "Principito",
     autor: "Antoine de Saint-Exupéry",
     anio: "2017",
@@ -45,7 +45,7 @@ export const data_biblioteca = [
     categoria: ["pricipito", "novela"],
   },
   {
-    id: "2",
+    id: "4",
     titulo: "Principito",
     autor: "Antoine de Saint-Exupéry",
     anio: "2017",
@@ -60,7 +60,7 @@ export const data_biblioteca = [
     categoria: ["pricipito", "novela"],
   },
   {
-    id: "1",
+    id: "5",
     titulo: "Dracula",
     autor: "Bram Stoker",
     anio: "2010",
@@ -75,7 +75,7 @@ export const data_biblioteca = [
     categoria: ["dracula", "novela"],
   },
   {
-    id: "2",
+    id: "6",
     titulo: "Principito",
     autor: "Antoine de Saint-Exupéry",
     anio: "2017",
@@ -90,7 +90,7 @@ export const data_biblioteca = [
     categoria: ["pricipito", "novela"],
   },
   {
-    id: "2",
+    id: "7",
     titulo: "Principito",
     autor: "Antoine de Saint-Exupéry",
     anio: "2017",
@@ -105,7 +105,7 @@ export const data_biblioteca = [
     categoria: ["pricipito", "novela"],
   },
   {
-    id: "2",
+    id: "8",
     titulo: "Principito",
     autor: "Antoine de Saint-Exupéry",
     anio: "2017",
