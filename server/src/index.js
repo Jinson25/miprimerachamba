@@ -1,7 +1,13 @@
+import doteven from "dotenv";
+doteven.config();
+
 import express from "express";
 import cors from "cors";
 import bookRouter from "./routers/book.router.js";
 import userRouter from "./routers/user.router.js";
+
+import { connectDB } from "./database/database.config.js";
+connectDB();
 
 const app = express();
 app.use(cors());

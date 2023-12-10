@@ -1,40 +1,44 @@
 import { Router } from "express";
 import jwt from "jsonwebtoken"; // Add the missing import statement for the jwt module
-import { data_users } from "../data.js";
 const router = Router();
+import handler from "express-async-handler";
+import { UserModel } from "../interfaces/user.model.js";
+import bcrypt from "bcryptjs";
 
-router.post("/login", (req, res) => {
+router.post(
+  "/login",
+  handler(async (req, res) => {
     const { email, password } = req.body;
-    const user = data_users.find(
-        (user) => user.email === email && user.password === password
-    );
-    if (user) {
-        res.send(generateTokenResponse(user));
-        return;
+    const user = await UserModel.findOne({ email });
+
+    if (user && bcrypt.compare(password, user.password)) {
+      res.send(generateTokenResponse(user));
+      return;
     }
 
-    res.status(401).send({ message: "Credenciales incorrectas" });
-});
+    res.status(401).send( "Credenciales incorrectas");
+  })
+);
 
-const generateTokenResponse = user => {
-    const token = jwt.sign(
-        {
-            id: user.id,
-            email: user.email,
-            isAdmin: user.isAdmin,
-        },
-        "SomeRandomText", // Fix the typo in the jwt.sign function
-        {
-            expiresIn: "1h",
-        }
-    );
+const generateTokenResponse = (user) => {
+  const token = jwt.sign(
+    {
+      id: user.id,
+      email: user.email,
+      isAdmin: user.isAdmin,
+    },
+    process.env.JWT_SECRET,
+    {
+      expiresIn: "1h",
+    }
+  );
 
-    return {
-        id: user.id,
-        email: user.email,
-        name: user.name,
-        isAdmin: user.isAdmin,
-        token,
-    };
+  return {
+    id: user.id,
+    email: user.email,
+    name: user.name,
+    isAdmin: user.isAdmin,
+    token,
+  };
 };
- export default router;
+export default router;
