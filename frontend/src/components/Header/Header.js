@@ -3,15 +3,14 @@ import classes from "./header.module.css";
 import { Link, useLocation } from "react-router-dom";
 import { Container } from "react-bootstrap";
 import Search from "../Search/Search";
+import { useAuth } from "../../hooks/useAuth";
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [showSearch, setShowSearch] = useState(false);
   const location = useLocation();
-  const logout = () => {};
-  const user = {
-    name: "Jinson",
-  };
+
+  const { user, logout} = useAuth();
 
   useEffect(() => {
     const handleScroll = () => {

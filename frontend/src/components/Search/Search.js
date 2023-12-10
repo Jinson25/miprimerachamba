@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import classes from "./search.css";
+import classes from "./search.module.css";
 
 export default function Search() {
   const [term, setTerm] = useState("");

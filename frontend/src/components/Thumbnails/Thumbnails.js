@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import StarRating from "../starCalificacion/StartRating";
-import "./Thumbnails.css";
+import "./Thumbnails.css"
 
 export default function Thumbnails({ libros }) {
   return (
@@ -18,7 +18,7 @@ export default function Thumbnails({ libros }) {
                       alt={libro.name}
                     />
 
-                    <div className="content">
+                    <div className="libro-container">
                       <div className="name">{libro.titulo} </div>
                       <div className="stars">
                         <StarRating stars={libro.calificacion} />

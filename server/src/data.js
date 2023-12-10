@@ -120,3 +120,16 @@ export const data_biblioteca = [
     categoria: ["pricipito", "novela"],
   },
 ];
+
+export const data_users = [
+  {
+    id: "1",
+    name: "Jinson",
+    apellido: "Medina",
+    email: "admin@admin.com",
+    password: "12345",
+    isAdmin: true,
+    rol: ["admin", "user"],
+  }
+
+]
