@@ -4,19 +4,24 @@ import StarRating from "../starCalificacion/StartRating";
 import "./Thumbnails.css"
 
 export default function Thumbnails({ libros }) {
+
+console.log(libros)
   return (
     <section className="booklist">
           <div className="container">
       <div className="row">
             <ul className="list grid">
-              {libros.map((libro) => (
+                {libros ? libros.map((libro) => (
+                
                 <li key={libro.id}>
+                  
                   <Link to={`/book/${libro.id}`}>
                     <img
                       className="image"
                       src={libro.portadaIMG}
                       alt={libro.name}
                     />
+                    
 
                     <div className="libro-container">
                       <div className="name">{libro.titulo} </div>
@@ -33,8 +38,8 @@ export default function Thumbnails({ libros }) {
                     </div>
                   </Link>
                 </li>
-              ))}
-            </ul>
+                )) : <h1>Cargando...</h1>}
+              </ul>
           </div>
       </div>
       </section>

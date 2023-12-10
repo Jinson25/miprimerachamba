@@ -38,7 +38,6 @@ async function createBooks() {
         return;
     }
     for (const book of data_biblioteca) {
-        book.portadaIMG = `/books/${book.portadaIMG}`;
         await BookModel.create(book);
     }
     console.log("Libros creados");

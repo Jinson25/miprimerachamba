@@ -10,6 +10,15 @@ router.get(
     res.send(books);
   })
 );
+router.delete(
+  "/",
+  handler(async (req, res) => {
+    // Elimina todos los documentos en la colección de libros
+    await BookModel.deleteMany({});
+
+    res.send({ message: "Todos los libros han sido eliminados correctamente." });
+  })
+);
 router.get(
     "/search/:searchTerm",
     handler(async (req, res) => {
