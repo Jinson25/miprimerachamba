@@ -34,7 +34,7 @@ export default function Header() {
   }, [scrolled]);
 
   return (
-    <header className={`${classes.header} ${scrolled ? classes.scrolled : ""} ${location.pathname !== '/' ? classes.customColor : ""}`}>
+    <header className={`${classes.header} ${scrolled ? classes.scrolled : ""} ${location.pathname !== '/login' ? classes.customColor : ""}`}>
       <Container className={classes.container}>
         <Link to="/" className={classes.logo}>
           YAVIBOOK

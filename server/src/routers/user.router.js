@@ -4,6 +4,7 @@ const router = Router();
 import handler from "express-async-handler";
 import { UserModel } from "../interfaces/user.model.js";
 import bcrypt from "bcryptjs";
+const PASSWORD_HASH_SALT_ROUNDS = 10;
 
 router.post(
   "/login",
@@ -16,7 +17,39 @@ router.post(
       return;
     }
 
-    res.status(401).send( "Credenciales incorrectas");
+    res.status(401).send("Credenciales incorrectas");
+  })
+);
+router.post(
+  "/register",
+  handler(async (req, res) => {
+    const { name, email, password, confirmPassword } = req.body;
+
+    if (password !== confirmPassword) {
+      res.status(400).send("Las contraseñas no coinciden");
+      return;
+    }
+
+    const userExists = await UserModel.findOne({ email });
+
+    if (userExists) {
+      res.status(400).send("El usuario ya existe");
+      return;
+    }
+
+    const hashedPassword = await bcrypt.hash(
+      password,
+      PASSWORD_HASH_SALT_ROUNDS
+    );
+
+    const newUser = {
+      name,
+      email: email.toLowerCase(),
+      password: hashedPassword,
+    };
+
+    const result = await UserModel.create(newUser);
+    res.send(generateTokenResponse(result));
   })
 );
 

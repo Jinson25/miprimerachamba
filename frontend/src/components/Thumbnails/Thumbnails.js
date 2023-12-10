@@ -5,7 +5,6 @@ import "./Thumbnails.css"
 
 export default function Thumbnails({ libros }) {
 
-console.log(libros)
   return (
     <section className="booklist">
           <div className="container">

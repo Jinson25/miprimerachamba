@@ -7,7 +7,7 @@
   }
   
   .details {
-    width: 28rem;
+    width: 25rem;
   }
   
   .details form {
@@ -17,6 +17,11 @@
   }
   
   .register {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .login{
     display: flex;
     justify-content: center;
     align-items: center;
