@@ -15,6 +15,11 @@ export const register = async registerData => {
     localStorage.setItem('user', JSON.stringify(data));
     return data;
 }
+export const updateProfile = async updateData => {
+    const { data } = await axios.put('api/v1/users/updateProfile', updateData);
+    localStorage.setItem('user', JSON.stringify(data));
+    return data;
+}
 
 export const logout = () => {
     localStorage.removeItem('user');

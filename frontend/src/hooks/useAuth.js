@@ -16,7 +16,7 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  const register = async data => {
+  const register = async (data) => {
     try {
       const user = await userService.register(data);
       setUser(user);
@@ -32,8 +32,17 @@ export const AuthProvider = ({ children }) => {
     toast.success("Cierre de sesión exitosa");
   };
 
+  const updateProfile = async (user) => {
+    const updateUser = await userService.updateProfile(user);
+    toast.success("Perfil actualizado");
+    if (updateUser) {
+      setUser(updateUser);
+    }
+
+  };
+
   return (
-    <AuthContext.Provider value={{ user, login, logout, register}}>
+    <AuthContext.Provider value={{ user, login, logout, register, updateProfile }}>
       {children}
     </AuthContext.Provider>
   );
