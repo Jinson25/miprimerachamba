@@ -5,7 +5,7 @@ import Input from "../../components/input/input";
 import Title from "../../components/Title/Title";
 import Button from "../../components/Title/Button";
 import { useAuth } from "../../hooks/useAuth";
-
+import ChangePassword from "../../components/ChangePassword/ChangePassword";
 
 export default function ProfilePage() {
   const {
@@ -22,9 +22,24 @@ export default function ProfilePage() {
 
   return (
     <div className={classes.container}>
+      {/* Tarjeta de Usuario a la Izquierda */}
+      <div className={classes.userCard}>
+        {/* Puedes agregar la foto de perfil aquí */}
+        <img
+          src={user.profilePicture || "default-profile-image.jpg"}
+          alt="Profile"
+          className={classes.profilePicture}
+        />
+        <p>Nombre: {user.name}</p>
+        <p>Apellido: {user.apellido}</p>
+        {/* Puedes mostrar más detalles del usuario según tus necesidades */}
+      </div>
+
+      {/* Formulario de Actualización de Perfil a la Derecha */}
       <div className={classes.details}>
-        <Title title="Actualizar Perfil" />
+        
         <form onSubmit={handleSubmit(submit)}>
+        <Title title="Actualizar Perfil" />
           <Input
             defaultValue={user.name}
             type="text"
@@ -44,10 +59,21 @@ export default function ProfilePage() {
             })}
             error={errors.apellido}
           />
+          <Input
+            defaultValue={user.email}
+            type="email"
+            label="Email"
+            {...register("email", {
+              required: true,
+            })}
+            error={errors.email}
+          />
 
           <Button type="submit" text="Actualizar" backgroundColor="#009e84" />
         </form>
 
+        {/* Componente de Cambio de Contraseña */}
+        <ChangePassword />
       </div>
     </div>
   );

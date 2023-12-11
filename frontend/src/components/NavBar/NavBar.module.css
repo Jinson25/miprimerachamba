@@ -1,0 +1,64 @@
+.header{
+  background-color: #151515;
+  width: 99vw;
+  padding: 0.5rem 10px;
+}
+.header a{
+  color: #fff;
+  font-size: normal;
+  text-decoration: none;
+}
+.header a:hover {
+  cursor: pointer;
+}
+.container {
+  margin: 0 auto;
+  display: flex;
+  width: 85vw;
+  justify-content: space-between;
+}
+.logo {
+  padding: 1rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+/* Lista no ordenada en el encabezado */
+.header ul {
+  display: flex;
+  list-style-type: none;
+  margin: 0;
+}
+
+/* Estilo de los elementos de la lista en el encabezado */
+.header ul a {
+  padding: 1rem;
+  display: inline-block;
+}
+
+/* Contenedor del menú en el encabezado */
+.menu_container {
+  position: relative;
+}
+
+/* Estilo del menú desplegable en el encabezado */
+.menu {
+  position: absolute;
+  z-index: 1;
+  display: none;
+}
+
+/* Mostrar el menú desplegable al pasar el mouse sobre el contenedor del menú */
+.menu_container:hover .menu {
+  display: block;
+  background-color: #151515;
+}
+
+/* Estilo de los elementos del menú desplegable */
+.menu a {
+  width: 100%;
+  min-width: 8rem;
+}
+.menu a:hover {
+  color: var(--purple-color);
+}

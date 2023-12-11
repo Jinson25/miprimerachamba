@@ -4,6 +4,7 @@ import Thumbnails from "../../components/Thumbnails/Thumbnails";
 import { useParams } from 'react-router-dom';
 import {Banner} from "../../components/Banner/Banner";
 import NotFound from "../../components/NotFound/NotFound";
+import Header from "../../components/Header/Header";
 
 const initialState = { libros: [] };
 const reducer = (state, action) => {
@@ -25,6 +26,7 @@ export default function HomePages() {
     }, [searchTerm]);
     return (
         <>
+            <Header/>
             <Banner />
             {libros.lenght === 0 && <NotFound linkRoute="Resetea la busqueda" />}
             <Thumbnails libros={libros}/> 

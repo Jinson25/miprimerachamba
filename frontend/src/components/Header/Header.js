@@ -14,7 +14,7 @@ export default function Header() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const isScrolled = window.scrollY > window.innerHeight * 0.25;
+      const isScrolled = window.scrollY > window.innerHeight *0.5;
       if(location.pathname === '/'){
         setScrolled(isScrolled && location.pathname === '/');
       }else{
@@ -34,7 +34,7 @@ export default function Header() {
   }, [scrolled]);
 
   return (
-    <header className={`${classes.header} ${scrolled ? classes.scrolled : ""} ${location.pathname !== '/login' ? classes.customColor : ""}`}>
+    <header className={`${classes.header} ${scrolled ? classes.scrolled : ""} ${location.pathname !== '/' ? classes.customColor : ""}`}>
       <Container className={classes.container}>
         <Link to="/" className={classes.logo}>
           YAVIBOOK

@@ -20,6 +20,9 @@ export const updateProfile = async updateData => {
     localStorage.setItem('user', JSON.stringify(data));
     return data;
 }
+export const changePassword = async passwords => {
+    await axios.put('/api/v1/users/changePassword', passwords);
+  };
 
 export const logout = () => {
     localStorage.removeItem('user');

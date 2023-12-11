@@ -32,7 +32,7 @@ export default function RegisterPage() {
   };
 
   return (
-    <div className={classes.container}>
+    <div className={classes.authContainer}>
       <div className={classes.details}>
         <Title title="Register" />
         <form onSubmit={handleSubmit(submit)} noValidate>

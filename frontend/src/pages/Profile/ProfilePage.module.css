@@ -1,0 +1,39 @@
+.container {
+  display: grid;
+  grid-template-columns: 20% 75%; /* Cambia los porcentajes según tus necesidades */
+  align-items: center;
+  justify-content: center;
+  margin: 50px 10px;
+}
+
+.container .userCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%; /* Cambia el valor según tus necesidades */
+  height: 500px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.container .details {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Divide el espacio en dos columnas iguales */
+  align-items: center;
+  justify-content: center;
+  width: 100%; /* Cambia el valor según tus necesidades */
+  margin: 20px;
+}
+.container .details form {
+  /* Estilos para el formulario */
+  grid-column: 1; /* Ocupa la primera columna */
+  margin: 20px;
+}
+
+.container .details changePassword {
+  /* Estilos para el cambio de contraseña */
+  grid-column: 2; /* Ocupa la segunda columna */
+  margin: 20px;
+}

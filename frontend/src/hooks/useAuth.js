@@ -38,11 +38,16 @@ export const AuthProvider = ({ children }) => {
     if (updateUser) {
       setUser(updateUser);
     }
+  };
 
+  const changePassword = async (passwords) => {
+    await userService.changePassword(passwords);
+    logout();
+    toast.success("Contraseña actualizada. vuelva a iniciar sesión");
   };
 
   return (
-    <AuthContext.Provider value={{ user, login, logout, register, updateProfile }}>
+    <AuthContext.Provider value={{ user, login, logout, register, updateProfile, changePassword }}>
       {children}
     </AuthContext.Provider>
   );

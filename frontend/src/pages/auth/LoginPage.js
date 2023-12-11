@@ -6,6 +6,7 @@ import classes from "./authPage.module.css";
 import Input from "../../components/input/input";
 import Title from "../../components/Title/Title";
 import Button from "../../components/Title/Button";
+
 export default function LoginPage() {
   const {
     handleSubmit,
@@ -21,14 +22,14 @@ export default function LoginPage() {
   useEffect(() => {
     if (!user) return;
     returnUrl ? navigate(returnUrl) : navigate("/");
-  }, [user]);
+  }, [user, navigate, returnUrl]);
 
   const submit = async ({ email, password }) => {
     await login(email, password);
   };
 
   return (
-    <div className={classes.container}>
+    <div className={classes.authContainer}>
       <div className={classes.details}>
         <Title title="Login" />
         <form onSubmit={handleSubmit(submit)} noValidate>
@@ -52,8 +53,8 @@ export default function LoginPage() {
             })}
             error={errors.password}
           />
-          <Button type="submit" text="Login"></Button>
           <div className={classes.register}>
+          <Button type="submit" text="Login"></Button>
             Eres nuevo? &nbsp;
             <Link to={`/register${returnUrl ? '?returnUrl=' + returnUrl : ''}`}>
               Registrate aqui

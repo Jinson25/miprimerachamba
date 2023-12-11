@@ -68,6 +68,28 @@ router.put(
   })
 );
 
+router.put(
+  "/changePassword",
+  auth,
+  handler(async (req, res) => {
+    const { currentPassword, newPassword } = req.body;
+    const user = await UserModel.findById(req.user.id);
+
+    if (!user) {
+      res.status(404).send("¡Error al cambiar la contraseña!");
+      return;
+    }
+    const equal = await bcrypt.compare(currentPassword, user.password);
+    if (!equal) {
+      res.status(401).send("¡La contraseña actual no es correcta!");
+      return;
+    }
+    user.password = await bcrypt.hash(newPassword, PASSWORD_HASH_SALT_ROUNDS);
+    await user.save();
+    res.send("¡Contraseña actualizada!");
+  })
+);
+
 const generateTokenResponse = (user) => {
   const token = jwt.sign(
     {
