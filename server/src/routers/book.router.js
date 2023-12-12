@@ -1,6 +1,7 @@
 import { Router } from "express";
 import { BookModel } from "../interfaces/book.model.js";
 import handler from "express-async-handler";
+import admin from "../middleware/admin.mid.js";
 const router = Router();
 
 router.get(
@@ -12,29 +13,41 @@ router.get(
 );
 router.delete(
   "/",
+  admin,
   handler(async (req, res) => {
     // Elimina todos los documentos en la colección de libros
     await BookModel.deleteMany({});
 
-    res.send({ message: "Todos los libros han sido eliminados correctamente." });
+    res.send({
+      message: "Todos los libros han sido eliminados correctamente.",
+    });
   })
 );
-router.get(
-    "/search/:searchTerm",
-    handler(async (req, res) => {
-        const { searchTerm } = req.params;
-        const searchRegex = new RegExp(searchTerm, "i");
+router.delete(
+  "/:bookId",
+  admin,
+  handler(async (req, res) => {
+    const { bookId } = req.params;
+    await BookModel.deleteOne({ _id: bookId });
+    res.send({ message: "El libro ha sido eliminado correctamente." });
+  })
+);
 
-        const books = await BookModel.find({
-            $or: [
-                { titulo: { $regex: searchRegex } },
-                { categoria: { $regex: searchRegex } },
-                { autor: { $regex: searchRegex } }
-            ]
-        });
-        res.send(books);
-        
-    })
+router.get(
+  "/search/:searchTerm",
+  handler(async (req, res) => {
+    const { searchTerm } = req.params;
+    const searchRegex = new RegExp(searchTerm, "i");
+
+    const books = await BookModel.find({
+      $or: [
+        { titulo: { $regex: searchRegex } },
+        { categoria: { $regex: searchRegex } },
+        { autor: { $regex: searchRegex } },
+      ],
+    });
+    res.send(books);
+  })
 );
 
 router.get(

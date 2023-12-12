@@ -6,6 +6,9 @@ import LoginPage from "./pages/auth/LoginPage";
 import RegisterPage from "./pages/auth/RegisterPage";
 import ProfilePage from "./pages/Profile/ProfilePage";
 import AuthRoute from "./components/Router/AuthRoute";
+import Dashboard from "./pages/Dashboard/Dashboard";
+import BooksAdminPage from "./pages/Library/BooksAdminPage";
+import AdminRoute from "./components/Router/AdminRoute";
 
 export default function AppRoutes() {
   return (
@@ -15,7 +18,30 @@ export default function AppRoutes() {
       <Route path="/book/:id" element={<BookPage />} />
       <Route path="/login" element={<LoginPage />} />
       <Route path="/register" element={<RegisterPage />} />
-      <Route path="/profile" element={<AuthRoute><ProfilePage/></AuthRoute>} />
+      <Route
+        path="/profile"
+        element={
+          <AuthRoute>
+            <ProfilePage />
+          </AuthRoute>
+        }
+      />
+      <Route
+        path="/dashboard"
+        element={
+          <AuthRoute>
+            <Dashboard />
+          </AuthRoute>
+        }
+      />
+      <Route
+        path="/admin/books/:searchTerm?"
+        element={
+          <AdminRoute>
+            <BooksAdminPage />
+          </AdminRoute>
+        }
+      />
       <Route path="*" element={<h1>Not Found 404</h1>} />
     </Routes>
   );
