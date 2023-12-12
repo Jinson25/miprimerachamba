@@ -10,8 +10,8 @@ function AdminRoute({ children }) {
   ) : (
     <NotFound
       linkRoute="/dashboard"
-      linkText="Go to Dashboard"
-      message="You don't have access to this page"
+      linkText="Ir al panel de control"
+      message="No tienes acceso a esta página"
     />
   );
 }

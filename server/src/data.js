@@ -124,8 +124,8 @@ export const data_biblioteca = [
 export const data_users = [
   {
     id: "1",
-    name: "Jinson",
-    apellido: "Medina",
+    name: "Administrador",
+    apellido: "yavibook",
     email: "admin@admin.com",
     password: "12345",
     isAdmin: true,
