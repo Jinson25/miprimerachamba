@@ -9,6 +9,7 @@ import AuthRoute from "./components/Router/AuthRoute";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import BooksAdminPage from "./pages/Library/BooksAdminPage";
 import AdminRoute from "./components/Router/AdminRoute";
+import BookForm from "./components/BookForm/BookForm";
 
 export default function AppRoutes() {
   return (
@@ -39,6 +40,22 @@ export default function AppRoutes() {
         element={
           <AdminRoute>
             <BooksAdminPage />
+          </AdminRoute>
+        }
+      />
+      <Route
+        path="/admin/createBook"
+        element={
+          <AdminRoute>
+            <BookForm />
+          </AdminRoute>
+        }
+      />
+      <Route
+        path="/admin/editBook/:bookId"
+        element={
+          <AdminRoute>
+            <BookForm />
           </AdminRoute>
         }
       />

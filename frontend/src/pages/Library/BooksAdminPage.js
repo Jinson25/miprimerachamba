@@ -13,7 +13,6 @@ export default function BooksAdminPage() {
   const { searchTerm } = useParams();
 
   useEffect(() => {
-    console.log("BooksAdminPage se ha montado");
     const loadBooks = async () => {
       try {
         const booksData = searchTerm ? await search(searchTerm) : await getAll();
@@ -51,6 +50,7 @@ export default function BooksAdminPage() {
     <div className={classes.container}>
       <div className={classes.list}>
         <Title title="Administrar libros" margin="1rem auto" />
+        <Link to="/admin/createBook" className={`${classes.create_button} ${classes.button}`}>Crear nuevo libro</Link>
         <Search
           searchRoute="/admin/books/"
           defaultRoute="/admin/books"
