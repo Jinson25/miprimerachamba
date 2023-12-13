@@ -58,10 +58,10 @@ router.put(
   "/updateProfile",
   auth,
   handler(async (req, res) => {
-    const { name, apellido, email } = req.body;
+    const { name, apellido, email, dateOfBirth, perfilIMG } = req.body;
     const user = await UserModel.findByIdAndUpdate(
       req.user.id,
-      { name, apellido, email },
+      { name, apellido, email, dateOfBirth, perfilIMG },
       { new: true }
     );
     res.send(generateTokenResponse(user));

@@ -20,26 +20,34 @@ export default function ProfilePage() {
     updateProfile(userData);
   };
 
+  console.log("Perfil IMG:", user.perfilIMG);
+
   return (
     <div className={classes.container}>
       {/* Tarjeta de Usuario a la Izquierda */}
       <div className={classes.userCard}>
         {/* Puedes agregar la foto de perfil aquí */}
         <img
-          src={user.profilePicture || "default-profile-image.jpg"}
+          src={
+            user.perfilIMG ??
+            "https://static.vecteezy.com/system/resources/thumbnails/009/292/244/small/default-avatar-icon-of-social-media-user-vector.jpg"
+          }
           alt="Profile"
           className={classes.profilePicture}
         />
+
         <p>Nombre: {user.name}</p>
         <p>Apellido: {user.apellido}</p>
+        <p>Email: {user.email}</p>
+        <p>Fecha de Nacimiento: {user.dateOfBirth}</p>
+        <p>Rol: {user.rol}</p>
         {/* Puedes mostrar más detalles del usuario según tus necesidades */}
       </div>
 
       {/* Formulario de Actualización de Perfil a la Derecha */}
       <div className={classes.details}>
-        
         <form onSubmit={handleSubmit(submit)}>
-        <Title title="Actualizar Perfil" />
+          <Title title="Actualizar Perfil" />
           <Input
             defaultValue={user.name}
             type="text"
@@ -67,6 +75,15 @@ export default function ProfilePage() {
               required: true,
             })}
             error={errors.email}
+          />
+          <Input
+            defaultValue={user.dateOfBirth}
+            type="date"
+            label="Fecha de Nacimiento"
+            {...register("dateOfBirth", {
+              required: true,
+            })}
+            error={errors.dateOfBirth}
           />
 
           <Button type="submit" text="Actualizar" backgroundColor="#009e84" />
