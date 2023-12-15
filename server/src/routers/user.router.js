@@ -1,5 +1,5 @@
 import { Router } from "express";
-import jwt from "jsonwebtoken"; // Add the missing import statement for the jwt module
+import jwt from "jsonwebtoken";
 const router = Router();
 import handler from "express-async-handler";
 import { UserModel } from "../interfaces/user.model.js";
@@ -53,7 +53,66 @@ router.post(
     res.send(generateTokenResponse(result));
   })
 );
+//obtener todos los usuarios
+router.get(
+  "/",
+  auth,
+  handler(async (req, res) => {
+    const users = await UserModel.find({});
+    res.send(users);
+  })
+);
 
+//obtener usuario por id
+router.get(
+  "/:userId",
+  auth,
+  handler(async (req, res) => {
+    const { userId } = req.params;
+    const user = await UserModel.findOne({ _id: userId });
+    res.send(user);
+  })
+);
+
+// Elimina todos los documentos en la colección de usuarios
+router.delete(
+  "/deleteAll",
+  auth,
+  handler(async (req, res) => {
+    await UserModel.deleteMany({});
+
+    res.send({
+      message: "Todos los usuarios han sido eliminados correctamente.",
+    });
+  })
+);
+
+// Elimina un usuario por su id
+router.delete(
+  "/:userId",
+  auth,
+  handler(async (req, res) => {
+    const { usersId } = req.params;
+    await UserModel.deleteOne({ _id: usersId });
+    res.send({ message: "El usuario ha sido eliminado correctamente." });
+  })
+);
+
+//actualizar usuario por id
+router.put(
+  "/:userId",
+  auth,
+  handler(async (req, res) => {
+    const updateUser = req.body;
+    const userId = req.params.userId;
+    const result = await UserModel.findByIdAndUpdate(userId, updateUser, {
+      new: true,
+    });
+    res.send(result);
+  })
+);
+
+//actualizar usuario perfil
 router.put(
   "/updateProfile",
   auth,
@@ -68,6 +127,7 @@ router.put(
   })
 );
 
+//cambiar contraseña
 router.put(
   "/changePassword",
   auth,
@@ -87,6 +147,23 @@ router.put(
     user.password = await bcrypt.hash(newPassword, PASSWORD_HASH_SALT_ROUNDS);
     await user.save();
     res.send("¡Contraseña actualizada!");
+  })
+);
+
+//buscar usuario por email correo y nombre
+router.get(
+  "/search/:searchTerm",
+  handler(async (req, res) => {
+    const { searchTerm } = req.params;
+    const searchRegex = new RegExp(searchTerm, "i");
+    const users = await UserModel.find({
+      $or: [
+        { name: { $regex: searchRegex } },
+        { apellido: { $regex: searchRegex } },
+        { email: { $regex: searchRegex } },
+      ],
+    });
+    res.send(users);
   })
 );
 

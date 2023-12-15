@@ -23,7 +23,7 @@ router.get(
 
 // Elimina todos los documentos en la colección de libros
 router.delete(
-  "/",
+  "/deleteAll",
   admin,
   handler(async (req, res) => {
     await BookModel.deleteMany({});
