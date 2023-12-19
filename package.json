@@ -1,0 +1,14 @@
+{
+  "name": "miprimerachamba",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "cd server && npm run start",
+    "build": "cd frontend && npm run build",
+    "postbuild": "cd frontend && npm run build && move build ..\\server\\src\\public\\"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

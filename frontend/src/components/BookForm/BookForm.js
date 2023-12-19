@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { create, getById, updateById } from "../../services/bibliotecaService";
-import "bootstrap/dist/css/bootstrap.min.css";
 
 const BookForm = () => {
   const navigate = useNavigate();
@@ -15,7 +14,7 @@ const BookForm = () => {
     portadaIMG: "",
     texto: "",
     ediciones: "",
-    categoria: [],
+    //categoria: [],
   });
 
   useEffect(() => {
@@ -164,7 +163,20 @@ const BookForm = () => {
                 onChange={handleChange}
             />
         </div>
-        <div className="mb-3">
+
+
+        {/* Agrega los demás campos aquí */}
+        <button type="submit" className="btn btn-primary">
+          {bookId ? "Guardar Cambios" : "Crear Libro"}
+        </button>
+      </form>
+    </div>
+  );
+};
+
+export default BookForm;
+/* 
+     <div className="mb-3">
           <label htmlFor="categorias" className="form-label">
             Categorías
           </label>
@@ -181,15 +193,4 @@ const BookForm = () => {
             <option value="Ciencia ficción">Ciencia ficción</option>
             <option value="Misterio">Misterio</option>
           </select>
-        </div>
-
-        {/* Agrega los demás campos aquí */}
-        <button type="submit" className="btn btn-primary">
-          {bookId ? "Guardar Cambios" : "Crear Libro"}
-        </button>
-      </form>
-    </div>
-  );
-};
-
-export default BookForm;
+        </div>*/

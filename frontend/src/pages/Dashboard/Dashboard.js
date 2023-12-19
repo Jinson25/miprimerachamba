@@ -39,7 +39,7 @@ const allItems = [
   {
     title: "USUARIOS",
     imageUrl: "/icons/people-fill.svg",
-    url: "/admin/profile",
+    url: "/admin/users/",
     forAdmin: true,
     bgColor: '#00bfa5',
     color: 'white',

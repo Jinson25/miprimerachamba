@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  web-yavibook:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    container_name: web-yavibook
+    ports:
+      - "7082:5000"
+    env_file:
+      - ../.env
+    networks:
+      - my-network
+networks:
+  my-network:
+    driver: bridge

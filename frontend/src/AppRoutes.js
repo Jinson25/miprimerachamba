@@ -10,6 +10,8 @@ import Dashboard from "./pages/Dashboard/Dashboard";
 import BooksAdminPage from "./pages/Library/BooksAdminPage";
 import AdminRoute from "./components/Router/AdminRoute";
 import BookForm from "./components/BookForm/BookForm";
+import UsersAdminPage from "./pages/Users/UsersAdminPage";
+import UserForm from "./components/UserForm/UserForm";
 
 export default function AppRoutes() {
   return (
@@ -58,6 +60,30 @@ export default function AppRoutes() {
             <BookForm />
           </AdminRoute>
         }
+      />
+      <Route
+        path="/admin/users/:searchTerm?"
+        element={
+          <AdminRoute>
+            <UsersAdminPage />
+          </AdminRoute>
+        }
+      />
+      <Route
+        path="/admin/createUser"
+        element={
+          <AdminRoute>
+            <UserForm/>
+          </AdminRoute>
+        }
+      />
+      <Route
+        path="/admin/editUser/:userId"
+        element={
+          <AdminRoute>
+            <UserForm />
+          </AdminRoute>
+        } 
       />
       <Route path="*" element={<h1>Not Found 404</h1>} />
     </Routes>

@@ -92,8 +92,8 @@ router.delete(
   "/:userId",
   auth,
   handler(async (req, res) => {
-    const { usersId } = req.params;
-    await UserModel.deleteOne({ _id: usersId });
+    const { userId } = req.params;
+    await UserModel.deleteOne({ _id: userId });
     res.send({ message: "El usuario ha sido eliminado correctamente." });
   })
 );

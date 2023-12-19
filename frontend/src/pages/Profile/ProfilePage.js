@@ -14,7 +14,7 @@ export default function ProfilePage() {
     formState: { errors },
   } = useForm();
 
-  const { user, updateProfile } = useAuth();
+  const { user, updateProfile} = useAuth();
 
   const submit = (userData) => {
     updateProfile(userData);
@@ -34,13 +34,16 @@ export default function ProfilePage() {
           }
           alt="Profile"
           className={classes.profilePicture}
+          onError={(e) => {
+            e.target.onerror = null;
+            e.target.src =
+              "https://static.vecteezy.com/system/resources/thumbnails/009/292/244/small/default-avatar-icon-of-social-media-user-vector.jpg";
+          }}
         />
 
         <p>Nombre: {user.name}</p>
         <p>Apellido: {user.apellido}</p>
         <p>Email: {user.email}</p>
-        <p>Fecha de Nacimiento: {user.dateOfBirth}</p>
-        <p>Rol: {user.rol}</p>
         {/* Puedes mostrar más detalles del usuario según tus necesidades */}
       </div>
 
@@ -76,16 +79,6 @@ export default function ProfilePage() {
             })}
             error={errors.email}
           />
-          <Input
-            defaultValue={user.dateOfBirth}
-            type="date"
-            label="Fecha de Nacimiento"
-            {...register("dateOfBirth", {
-              required: true,
-            })}
-            error={errors.dateOfBirth}
-          />
-
           <Button type="submit" text="Actualizar" backgroundColor="#009e84" />
         </form>
 
