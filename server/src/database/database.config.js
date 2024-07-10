@@ -1,4 +1,4 @@
-import { connect, set } from "mongoose";
+import mongoose, { connect, set } from "mongoose";
 import { UserModel } from "../interfaces/user.model.js";
 import { BookModel } from "../interfaces/book.model.js";
 import { data_biblioteca } from "../data.js";
@@ -9,7 +9,10 @@ set("strictQuery", true);
 
 export const connectDB = async () => {
   try {
-    connect(process.env.MONGO_URI, {});
+    const conn = await mongoose.connect('mongodb://localhost:27017/yavibook', {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
     await createUsers();
     await createBooks();
     console.log("Base de datos conectada");
