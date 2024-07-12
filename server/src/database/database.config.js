@@ -9,10 +9,7 @@ set("strictQuery", true);
 
 export const connectDB = async () => {
   try {
-    const conn = await mongoose.connect('mongodb://localhost:27017/yavibook', {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
+    connect(process.env.MONGO_URI, {});
     await createUsers();
     await createBooks();
     console.log("Base de datos conectada");
