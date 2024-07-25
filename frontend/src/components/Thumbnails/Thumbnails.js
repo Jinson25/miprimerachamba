@@ -15,11 +15,13 @@ export default function Thumbnails({ libros }) {
                 <li key={libro.id}>
                   
                   <Link to={`/book/${libro.id}`}>
+                  <div className="image-container">
                     <img
                       className="image"
                       src={libro.portadaIMG}
                       alt={libro.name}
                     />
+                  </div>
                     
 
                     <div className="libro-container">

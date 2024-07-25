@@ -9,6 +9,7 @@ export default function Button({
   fontSize,
   width,
   height,
+  borderRadius,
 }) {
   return (
     <div className={classes.button}>
@@ -19,6 +20,7 @@ export default function Button({
           fontSize,
           width,
           height,
+          borderRadius,
         }}
         type={type}
         onClick={onClick}
@@ -37,4 +39,5 @@ Button.defaultProps = {
   fontSize: '1.3rem',
   width: '10rem',
   height: '3.5rem',
+  borderRadius: '0.5rem',
 };

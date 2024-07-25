@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import { ArrowRightCircle } from "react-bootstrap-icons";
 import "animate.css";
 import TrackVisibility from "react-on-screen";
 import "./banner.css";
@@ -74,12 +73,11 @@ export const Banner = () => {
                       <span className="wrap">{text}</span>
                     </span>
                     <p>
-                      Lorem Ipsum is simply dummy text of the printing and
-                      typesetting industry. Lorem Ipsum has been the industry's
+                      La Biblioteca Yavi es un espacio dedicado a la promoción
+                      de la lectura y el conocimiento. Nuestra colección diversa
+                      incluye obras literarias, asegurando que cada visitante encuentre algo de
+                      interés.
                     </p>
-                    <button onClick={() => console.log("connect")}>
-                      <ArrowRightCircle size={25} />
-                    </button>
                   </div>
                 )}
               </TrackVisibility>

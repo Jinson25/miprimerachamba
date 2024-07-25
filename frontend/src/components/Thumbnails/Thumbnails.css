@@ -27,10 +27,21 @@
   background-color: #ffffff;
   text-align: center;
 }
+.image-container {
+  overflow: hidden; /* Oculta cualquier contenido que se desborde */
+  display: flex; /* Usa flexbox para centrar la imagen */
+  align-items: center; /* Centra verticalmente */
+  justify-content: center; /* Centra horizontalmente */
+}
 
 .image {
   object-fit: cover;
-  height: 14.5rem;
+  width: 100%; /* Ajusta el ancho al 100% del contenedor */
+  height: 15.5rem; /* Mantén la altura fija */
+  display: block; /* Asegura que las imágenes se comporten como bloques */
+  margin: auto; /* Centra las imágenes dentro de su contenedor */
+  border-radius: 1px black;
+  border-color: 10px  black;
 }
 
 .content {
@@ -60,3 +71,5 @@
 .autor p span{
   font-weight: bolder;
 }
+
+

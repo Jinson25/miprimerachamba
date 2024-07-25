@@ -21,7 +21,14 @@ export const updateProfile = async (updateData) => {
   return data;
 };
 export const changePassword = async (passwords) => {
-  await axios.put("/api/v1/users/changePassword", passwords);
+  try {
+    await axios.put("/api/v1/users/changePassword", passwords);
+  } catch (error) {
+    if (error.response && error.response.status === 401) {
+      throw new Error("¡La contraseña actual no es correcta!");
+    }
+    throw error;
+  }
 };
 export const deleteUserId = async (userId) => {
   await axios.delete(`/api/v1/users/${userId}`);

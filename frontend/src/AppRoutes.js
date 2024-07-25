@@ -12,6 +12,7 @@ import AdminRoute from "./components/Router/AdminRoute";
 import BookForm from "./components/BookForm/BookForm";
 import UsersAdminPage from "./pages/Users/UsersAdminPage";
 import UserForm from "./components/UserForm/UserForm";
+import NotFound from "./components/NotFound/NotFound";
 
 export default function AppRoutes() {
   return (
@@ -85,7 +86,7 @@ export default function AppRoutes() {
           </AdminRoute>
         } 
       />
-      <Route path="*" element={<h1>Not Found 404</h1>} />
+      <Route path="*" element={<NotFound/>} />
     </Routes>
   );
 }
