@@ -62,7 +62,6 @@ router.put(
     const bookId = req.params.bookId;
     const result = await BookModel.findByIdAndUpdate(bookId, updateBook, { new: true });
     res.send(result);
-    console.log("El método se ha actualizado correctamente.");
   })
 );
 
@@ -75,6 +74,7 @@ router.get(
 
     const books = await BookModel.find({
       $or: [
+        { codigo: { $regex: searchRegex } }, 
         { titulo: { $regex: searchRegex } },
         { categoria: { $regex: searchRegex } },
         { autor: { $regex: searchRegex } },

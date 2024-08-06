@@ -177,7 +177,7 @@ const generateTokenResponse = (user) => {
     },
     process.env.JWT_SECRET,
     {
-      expiresIn: "1h",
+      expiresIn: "7h",
     }
   );
 
@@ -187,6 +187,7 @@ const generateTokenResponse = (user) => {
     name: user.name,
     apellido: user.apellido,
     isAdmin: user.isAdmin,
+    perfilIMG: user.perfilIMG, // Asegúrate de incluir perfilIMG en la respuesta
     token,
   };
 };

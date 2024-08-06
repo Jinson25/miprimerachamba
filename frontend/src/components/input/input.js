@@ -21,7 +21,7 @@ function input(
   };
 
   return (
-    <InputContainer label={label}>
+    <InputContainer>
       <input
         defaultValue={defaultValue}
         className={classes.input}

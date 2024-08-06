@@ -6,6 +6,7 @@ import express from "express";
 import cors from "cors";
 import bookRouter from "./routers/book.router.js";
 import userRouter from "./routers/user.router.js";
+import loanRouter from "./routers/loan.router.js";
 
 import { connectDB } from "./database/database.config.js";
 connectDB();
@@ -19,6 +20,7 @@ app.use(express.json());
 
 app.use("/api/v1/biblioteca", bookRouter);
 app.use("/api/v1/users", userRouter);
+app.use("/api/v1/prestamo", loanRouter);
 
 const publicFolder = path.join(__dirname, 'public');
 app.use(express.static(publicFolder));

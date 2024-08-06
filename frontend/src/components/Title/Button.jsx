@@ -4,24 +4,11 @@ export default function Button({
   type,
   text,
   onClick,
-  color,
-  backgroundColor,
-  fontSize,
-  width,
-  height,
-  borderRadius,
 }) {
   return (
     <div className={classes.button}>
       <button
-        style={{
-          color,
-          backgroundColor,
-          fontSize,
-          width,
-          height,
-          borderRadius,
-        }}
+        className='text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 w-full py-2 mt-2 rounded'
         type={type}
         onClick={onClick}
       >

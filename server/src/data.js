@@ -1,6 +1,7 @@
 export const data_biblioteca = [
   {
     id: "1",
+    codigo: "B5-0001",
     titulo: "Dracula",
     autor: "Bram Stoker",
     anio: "2010",

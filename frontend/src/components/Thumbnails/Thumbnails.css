@@ -73,3 +73,11 @@
 }
 
 
+/* Thumbnails.css */
+.image-container img {
+  transition: transform 0.2s ease-in-out;
+}
+
+.image-container img:hover {
+  transform: scale(1.05);
+}

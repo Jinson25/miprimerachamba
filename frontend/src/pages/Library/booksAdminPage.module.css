@@ -47,4 +47,6 @@ a.add_food:hover {
   margin-right: 1rem;
   color: darkblue;
   cursor: pointer;
+  text-decoration: none;
+  border-radius: 1px solid black;
 }

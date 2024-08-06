@@ -32,11 +32,17 @@ export const AuthProvider = ({ children }) => {
     toast.success("Cierre de sesión exitosa");
   };
 
-  const updateProfile = async (user) => {
-    const updateUser = await userService.updateProfile(user);
-    toast.success("Perfil actualizado");
-    if (updateUser) {
-      setUser(updateUser);
+  const updateProfile = async (userData) => {
+    try {
+      const updateUser = await userService.updateProfile(userData);
+      toast.success("Perfil actualizado");
+      if (updateUser) {
+        console.log("Usuario después de actualizar:", updateUser);
+        setUser(updateUser);
+      }
+    } catch (error) {
+      toast.error("Error al actualizar el perfil");
+      console.error(error);
     }
   };
 

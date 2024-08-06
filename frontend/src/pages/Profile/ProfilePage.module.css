@@ -1,39 +1,78 @@
-.container {
-  display: grid;
-  grid-template-columns: 20% 75%; /* Cambia los porcentajes según tus necesidades */
-  align-items: center;
-  justify-content: center;
-  margin: 50px 10px;
-}
 
-.container .userCard {
+
+.container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  width: 100%; /* Cambia el valor según tus necesidades */
-  height: 500px;
+  padding: 20px;
+  margin: 50px 10px;
+}
+
+.userCard {
+  display: flex;
+  align-items: center;
+  padding: 20px;
   border: 1px solid #ccc;
   border-radius: 10px;
-  padding: 20px;
+  width: 100%;
+  max-width: 800px;
+  margin-bottom: 20px;
 }
 
-.container .details {
+.userInfo {
+  margin-left: 20px;
+}
+
+.profilePicture {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #ccc;
+}
+
+.details {
+  width: 100%;
+  max-width: 800px;
   display: grid;
-  grid-template-columns: 1fr 1fr; /* Divide el espacio en dos columnas iguales */
-  align-items: center;
-  justify-content: center;
-  width: 100%; /* Cambia el valor según tus necesidades */
-  margin: 20px;
-}
-.container .details form {
-  /* Estilos para el formulario */
-  grid-column: 1; /* Ocupa la primera columna */
-  margin: 20px;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
 }
 
-.container .details changePassword {
-  /* Estilos para el cambio de contraseña */
-  grid-column: 2; /* Ocupa la segunda columna */
-  margin: 20px;
+.formGroup {
+  display: flex;
+  flex-direction: column;
+}
+
+.formGroup label {
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.formGroup input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.formGroup select {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.submitButton {
+  grid-column: span 2;
+  justify-self: center;
+  background-color: #009e84;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.changePasswordContainer {
+  grid-column: span 2;
+  margin-top: 20px;
 }

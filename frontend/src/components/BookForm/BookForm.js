@@ -6,6 +6,7 @@ const BookForm = () => {
   const navigate = useNavigate();
   const { bookId } = useParams();
   const [formData, setFormData] = useState({
+    codigo: "",
     titulo: "",
     autor: "",
     anio: "",
@@ -79,6 +80,19 @@ const BookForm = () => {
     <div className="container mt-4">
       <h2>{bookId ? "Editar Libro" : "Crear Nuevo Libro"}</h2>
       <form onSubmit={handleSubmit} className="p-4 border rounded">
+        <div className="mb-3">
+          <label htmlFor="Codigo" className="form-label">
+            Codigo del Libro
+          </label>
+          <input
+            type="text"
+            className="form-control"
+            id="codigo"
+            name="codigo"
+            value={formData.codigo}
+            onChange={handleChange}
+          />
+        </div>
         <div className="d-flex flex-wrap">
           <div className="flex-fill p-2">
             <div className="mb-3">

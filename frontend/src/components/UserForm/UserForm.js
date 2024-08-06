@@ -18,7 +18,6 @@ const UserForm = () => {
     confirmPassword: "",
     isAdmin: false,
     perfilIMG: "",
-    fondoIMG: "",
     dateOfBirth: "",
   });
 
@@ -133,19 +132,6 @@ const UserForm = () => {
                 id="perfilIMG"
                 name="perfilIMG"
                 value={formData.perfilIMG}
-                onChange={handleChange}
-              />
-            </div>
-            <div className="mb-3">
-              <label htmlFor="fondoIMG" className="form-label">
-                Foto de Fondo
-              </label>
-              <input
-                type="text"
-                className="form-control"
-                id="fondoIMG"
-                name="fondoIMG"
-                value={formData.fondoIMG}
                 onChange={handleChange}
               />
             </div>
