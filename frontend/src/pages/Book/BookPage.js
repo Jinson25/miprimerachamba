@@ -5,6 +5,8 @@ import { getById } from "../../services/bibliotecaService";
 import { createLoan } from "../../services/prestamoService";
 import NotFound from "../../components/NotFound/NotFound";
 import Modal from "../../components/Modal/modal";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function BookPage() {
   const [book, setBook] = useState({});
@@ -18,17 +20,24 @@ export default function BookPage() {
     getById(id).then(setBook);
   }, [id]);
 
+  const handleCedulaChange = (e) => {
+    const { value } = e.target;
+    if (/^\d*$/.test(value) && value.length <= 10) {
+      setCedula(value);
+    }
+  };
+
   const handleLoan = async (event) => {
     event.preventDefault();
     const loan = { bookId: id, userId: cedula, startDate: new Date(), endDate, cedula };
     try {
       await createLoan(loan);
-      alert('Préstamo solicitado con éxito!');
+      toast.success('Préstamo solicitado con éxito!');
       setShowLoanForm(false);
       setBook((prevBook) => ({ ...prevBook, disponibles: false }));
     } catch (error) {
       console.error('Error al solicitar préstamo:', error.response ? error.response.data : error.message);
-      alert('Error al solicitar préstamo.');
+      toast.error('Error al solicitar préstamo.');
     }
   };
 
@@ -89,7 +98,7 @@ export default function BookPage() {
             <input
               type='text'
               value={cedula}
-              onChange={(e) => setCedula(e.target.value)}
+              onChange={handleCedulaChange}
               required
               className="w-full px-3 py-2 border rounded"
             />

@@ -13,6 +13,7 @@ import BookForm from "./components/BookForm/BookForm";
 import UsersAdminPage from "./pages/Users/UsersAdminPage";
 import UserForm from "./components/UserForm/UserForm";
 import NotFound from "./components/NotFound/NotFound";
+import LoansPage from "./pages/Loan/LoansPage";
 
 export default function AppRoutes() {
   return (
@@ -47,6 +48,14 @@ export default function AppRoutes() {
         }
       />
       <Route
+        path="/admin/loans"
+        element={
+          <AdminRoute>
+            <LoansPage />
+          </AdminRoute>
+        }
+      ></Route>
+      <Route
         path="/admin/createBook"
         element={
           <AdminRoute>
@@ -74,7 +83,7 @@ export default function AppRoutes() {
         path="/admin/createUser"
         element={
           <AdminRoute>
-            <UserForm/>
+            <UserForm />
           </AdminRoute>
         }
       />
@@ -84,9 +93,9 @@ export default function AppRoutes() {
           <AdminRoute>
             <UserForm />
           </AdminRoute>
-        } 
+        }
       />
-      <Route path="*" element={<NotFound/>} />
+      <Route path="*" element={<NotFound />} />
     </Routes>
   );
 }

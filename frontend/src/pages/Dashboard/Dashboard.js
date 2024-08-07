@@ -52,4 +52,12 @@ const allItems = [
     bgColor: "#e040fb",
     color: "white",
   },
+  {
+    title: "PRÉSTAMOS",
+    imageUrl: "/icons/book-half.svg", // Añade el icono adecuado aquí
+    url: "/admin/loans",
+    forAdmin: true,
+    bgColor: "#ff9800",
+    color: "white",
+  },
 ];

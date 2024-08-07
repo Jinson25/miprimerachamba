@@ -59,10 +59,17 @@ router.put('/loans/:id', async (req, res) => {
     const { endDate } = req.body;
 
     try {
-        const loan = await Loan.findByIdAndUpdate(id, { endDate }, { new: true });
+        const loan = await Loan.findByIdAndUpdate(id, { endDate, returned: true }, { new: true }); // Actualiza el préstamo para marcarlo como devuelto
+        
+        if (endDate) {
+            // Actualizar la disponibilidad del libro
+            const book = await BookModel.findById(loan.bookId);
+            book.disponibles = true;
+            await book.save();
+        }
+
         res.status(200).json(loan);
     } catch (error) {
-        console.error('Error al actualizar el préstamo:', error);
         res.status(500).json({ message: 'Error al actualizar el préstamo.', error });
     }
 });

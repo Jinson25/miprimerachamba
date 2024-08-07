@@ -5,7 +5,7 @@ const API_URL = '/api/v1/prestamo/loans';
 // Obtener todos los préstamos
 export const getAllLoans = async () => {
   const { data } = await axios.get(API_URL);
-  return data;
+  return data.filter(loan => !loan.returned); // Excluir préstamos devueltos
 };
 
 // Obtener un préstamo por ID
@@ -27,8 +27,13 @@ export const createLoan = async (loan) => {
 
 // Actualizar un préstamo por ID
 export const updateLoanById = async (loanId, loan) => {
-  const { data } = await axios.put(`${API_URL}/${loanId}`, loan);
-  return data;
+  try {
+    const { data } = await axios.put(`${API_URL}/${loanId}`, loan);
+    return data;
+  } catch (error) {
+    console.error('Error en updateLoanById:', error.response ? error.response.data : error.message);
+    throw error;
+  }
 };
 
 // Eliminar un préstamo por ID
