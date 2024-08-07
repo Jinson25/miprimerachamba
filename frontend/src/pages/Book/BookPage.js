@@ -4,7 +4,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { getById } from "../../services/bibliotecaService";
 import { createLoan } from "../../services/prestamoService";
 import NotFound from "../../components/NotFound/NotFound";
-import Modal from "../../components/Modal/modal"; // Importa el componente de modal
+import Modal from "../../components/Modal/modal";
 
 export default function BookPage() {
   const [book, setBook] = useState({});
@@ -20,13 +20,14 @@ export default function BookPage() {
 
   const handleLoan = async (event) => {
     event.preventDefault();
-    const loan = { bookId: id, userId: cedula, startDate: new Date(), endDate };
+    const loan = { bookId: id, userId: cedula, startDate: new Date(), endDate, cedula };
     try {
       await createLoan(loan);
       alert('Préstamo solicitado con éxito!');
-      setShowLoanForm(false); // Cierra el modal
+      setShowLoanForm(false);
+      setBook((prevBook) => ({ ...prevBook, disponibles: false }));
     } catch (error) {
-      console.error('Error al solicitar préstamo:', error);
+      console.error('Error al solicitar préstamo:', error.response ? error.response.data : error.message);
       alert('Error al solicitar préstamo.');
     }
   };
@@ -62,12 +63,18 @@ export default function BookPage() {
                 <span className='fw-6'>Historia: </span>
                 <span>{book.texto}</span>
               </div>
-              <button 
-                className='btn btn-primary' 
-                onClick={() => setShowLoanForm(true)}
-              >
-                Pedir prestado
-              </button>
+              {book.disponibles ? (
+                <button 
+                  className='btn btn-primary' 
+                  onClick={() => setShowLoanForm(true)}
+                >
+                  Pedir prestado
+                </button>
+              ) : (
+                <div className='text-red-600 font-bold mt-4'>
+                  Este libro está prestado por otro usuario. Por favor, espera hasta que esté disponible.
+                </div>
+              )}
             </div>
           </div>
         </div>

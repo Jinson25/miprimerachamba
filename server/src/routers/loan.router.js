@@ -7,7 +7,7 @@ const router = Router();
 
 // Crear un nuevo préstamo
 router.post('/loans', async (req, res) => {
-    const { bookId, userId, startDate, endDate } = req.body;
+    const { bookId, userId, startDate, endDate, cedula } = req.body;
 
     try {
         // Verificar si el libro existe
@@ -16,25 +16,28 @@ router.post('/loans', async (req, res) => {
             return res.status(404).json({ message: 'Libro no encontrado.' });
         }
 
+        // Verificar si el libro está disponible
+        if (!book.disponibles) {
+            return res.status(400).json({ message: 'El libro no está disponible para préstamo.' });
+        }
+
         // Verificar si el usuario existe
-        const user = await UserModel.findById(userId);
+        const user = await UserModel.findOne({ cedula });
         if (!user) {
             return res.status(404).json({ message: 'Usuario no encontrado.' });
         }
 
-        // Verificar si el libro está disponible
-        const existingLoan = await Loan.findOne({
-            bookId,
-            endDate: { $gte: new Date() },
-        });
-        if (existingLoan) {
-            return res.status(400).json({ message: 'El libro ya está prestado.' });
-        }
-
-        const loan = new Loan({ bookId, userId, startDate, endDate });
+        // Crear el préstamo si todo está bien
+        const loan = new Loan({ bookId, userId: user._id, startDate, endDate, cedula });
         await loan.save();
+
+        // Actualizar el estado del libro a no disponible
+        book.disponibles = false;
+        await book.save();
+
         res.status(201).json(loan);
     } catch (error) {
+        console.error('Error al crear el préstamo:', error);
         res.status(500).json({ message: 'Error al crear el préstamo.', error });
     }
 });
@@ -45,6 +48,7 @@ router.get('/loans', async (req, res) => {
         const loans = await Loan.find().populate('bookId').populate('userId');
         res.status(200).json(loans);
     } catch (error) {
+        console.error('Error al obtener los préstamos:', error);
         res.status(500).json({ message: 'Error al obtener los préstamos.', error });
     }
 });
@@ -58,6 +62,7 @@ router.put('/loans/:id', async (req, res) => {
         const loan = await Loan.findByIdAndUpdate(id, { endDate }, { new: true });
         res.status(200).json(loan);
     } catch (error) {
+        console.error('Error al actualizar el préstamo:', error);
         res.status(500).json({ message: 'Error al actualizar el préstamo.', error });
     }
 });
@@ -70,6 +75,7 @@ router.delete('/loans/:id', async (req, res) => {
         await Loan.findByIdAndDelete(id);
         res.status(200).json({ message: 'Préstamo eliminado.' });
     } catch (error) {
+        console.error('Error al eliminar el préstamo:', error);
         res.status(500).json({ message: 'Error al eliminar el préstamo.', error });
     }
 });

@@ -16,8 +16,13 @@ export const getLoanById = async (loanId) => {
 
 // Crear un nuevo préstamo
 export const createLoan = async (loan) => {
-  const { data } = await axios.post(API_URL, loan);
-  return data;
+  try {
+    const { data } = await axios.post(API_URL, loan);
+    return data;
+  } catch (error) {
+    console.error('Error en createLoan:', error.response ? error.response.data : error.message);
+    throw error;
+  }
 };
 
 // Actualizar un préstamo por ID

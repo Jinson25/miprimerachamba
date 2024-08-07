@@ -35,6 +35,9 @@ export default function Thumbnails({ libros }) {
                         <p>
                           <span className="font-semibold">Publicado:</span> {libro.anio}
                         </p>
+                        <p>
+                          <span className="font-semibold">Disponible:</span> {libro.disponibles ? "Sí" : "No"}
+                        </p>
                       </div>
                     </div>
                   </Link>
